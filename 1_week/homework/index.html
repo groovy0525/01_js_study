@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAVER</title>
+
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="inner">
+        <div class="header__logo">
+          <h1>
+            <a href="#"><img src="https://s.pstatic.net/static/www/mobile/edit/2020/1222/mobile_223809730505.gif" alt="네이버 로고"></a>
+          </h1>
+        </div>
+        <form id="search-form">
+          <div class="inputBox">
+            <input type="text">
+            <button type="submit">검색</button>
+          </div>
+        </form>
+        <ul class="header__snb">
+          <li><a href="#">네이버를 시작페이지로</a></li>
+          <li><a href="#">쥬니어네이버</a></li>
+          <li><a href="#">해피빈</a></li>
+        </ul>
+      </div>
+
+      <nav class="gnb">
+        <div class="inner">
+          <ul class="gnbList">
+            <li class="gnbList__item green"><a href="#">메일</a></li>
+            <li class="gnbList__item green"><a href="#">카페</a></li>
+            <li class="gnbList__item green"><a href="#">블로그</a></li>
+            <li class="gnbList__item green"><a href="#">지식iN</a></li>
+            <li class="gnbList__item green"><a href="#">Pay</a></li>
+            <li class="gnbList__item green"><a href="#">TV</a></li>
+            <li class="gnbList__item"><a href="#">사전</a></li>
+            <li class="gnbList__item"><a href="#">뉴스</a></li>
+            <li class="gnbList__item"><a href="#">증권</a></li>
+            <li class="gnbList__item"><a href="#">부동산</a></li>
+            <li class="gnbList__item"><a href="#">지도</a></li>
+            <li class="gnbList__item"><a href="#">영화</a></li>
+            <li class="gnbList__item"><a href="#">VIBE</a></li>
+            <li class="gnbList__item"><a href="#">책</a></li>
+            <li class="gnbList__item"><a href="#">웹툰</a></li>
+            <li class="gnbList__item more"><a href="#">더 보기</a></li>
+          </ul>
+          <div class="searchFilter">
+            검색어 필터 설정이 필요합니다.
+          </div>
+        </div>
+      </nav>
+      
+    </header>
+  </div>
+
+  <script>
+    const searchInput = document.querySelector('#search-form input');
+    searchInput.addEventListener('focus', () => {
+      const inputBox = document.querySelector('#search-form .inputBox');
+      inputBox.classList.toggle('focus');
+    });
+    searchInput.addEventListener('blur', () => {
+      const inputBox = document.querySelector('#search-form .inputBox');
+      inputBox.classList.toggle('focus');
+    });
+  </script>
+</body>
+</html>
