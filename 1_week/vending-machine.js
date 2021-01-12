@@ -152,6 +152,7 @@ class VendingMachine {
   /**
    * 판매 음료 이름 변경 함수
    * @param {string} name
+   * @param {string} newName
    */
   changeDrinkName(name, newName) {
     this.items = this.items.map((item) => {
