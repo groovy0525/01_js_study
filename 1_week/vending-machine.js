@@ -31,16 +31,28 @@ class Drink {
    * 음료의 이름을 바꾸는 함수
    * @param {string} newName
    */
-  set setName(newName) {
-    this.name = newName
+  set name(newName) {
+    if (!newName) {
+      console.log('이름은 최소 1글자 이상이어야 합니다.')
+      return
+    }
+    this._name = newName
+  }
+
+  get name() {
+    return this._name
   }
 
   /**
    * 음료의 가격을 바꾸는 함수
    * @param {number} newPrice
    */
-  set setPrice(newPrice) {
-    this.price = newPrice
+  set price(newPrice) {
+    this._price = newPrice
+  }
+
+  get price() {
+    return this._price
   }
 }
 
@@ -87,18 +99,12 @@ class VendingMachine {
    */
   sellDrink(name) {
     this.items = this.items.map((item) => {
-      if (item.value.name === name) {
-        const newItem = {
-          ...item,
-          stock: item.stock - 1,
-          sellCount: item.sellCount + 1,
-        }
-        this.totalMoney += newItem.value.price
-        return newItem
-      } else {
-        return item
-      }
+      return item.value.name === name
+        ? { ...item, stock: item.stock - 1, sellCount: item.sellCount + 1 }
+        : item
     })
+    const drink = this.items.find((item) => item.value.name === name).value
+    this.totalMoney += drink.price
   }
 
   /**
