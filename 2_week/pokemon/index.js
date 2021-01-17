@@ -22,5 +22,4 @@ class Pokemon {
   }
 }
 
-const a = new Pokemon()
-console.log(a.list.name)
+new Pokemon()
