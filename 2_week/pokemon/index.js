@@ -11,8 +11,16 @@ import Detail from './detail'
 class Pokemon {
   constructor() {
     this.list = new List()
-    this.Detail = new Detail()
+    this.detail = new Detail()
+  }
+
+  changeDetail(url) {
+    this.detail = {
+      ...this.detail,
+      url,
+    }
   }
 }
 
-new Pokemon()
+const a = new Pokemon()
+console.log(a.list.name)
