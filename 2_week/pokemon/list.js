@@ -1,21 +1,22 @@
 class List {
   constructor() {
     this.container = document.querySelector('.wrap-list')
-    this.name
-    this.loadPokemon()
+    this.name = ''
+    this.fetchList()
   }
   // 1. fetch
   // 2. 결과물을 바탕으로 render
   // 3. 일어난 액션의 url을 detail 에게 전달
 
-  loadPokemon() {
-    fetch('https://pokeapi.co/api/v2/pokemon')
-      .then((res) => res.json())
-      .then((json) => {
-        this.display(json.results)
-        this.addEvent()
-      })
-      .catch((e) => console.log(e))
+  async fetchList() {
+    try {
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon')
+      const data = await response.json()
+      this.display(data.results)
+      this.addEvent()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   display(items) {
