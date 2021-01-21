@@ -24,16 +24,15 @@ class List {
   }
 
   addEvent() {
-    const list = document.querySelectorAll('.wrap-list li')
-    list.forEach((listItem) =>
-      listItem.addEventListener('click', this.handleEvent),
-    )
+    this.container.addEventListener('click', this.handleEvent)
   }
 
   handleEvent(event) {
-    const name = event.target.innerHTML
-    this.name = name
-    console.log(this.name)
+    if (event.target.tagName === 'LI') {
+      const name = event.target.innerHTML
+      this.name = name
+      console.log(this.name)
+    }
   }
 
   render(items) {
