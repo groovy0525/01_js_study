@@ -3,12 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>포켓몬 도감</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .wrap-pokemon {
+      display: flex;
+      min-height: 100vh;
+    }
+    .wrap-detail {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .wrap-detail .empty {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .wrap-detail .photo-list {
+      border: 1px solid #000;
+    }
+    .wrap-list {
+      width: 300px;
+      border-left: 1px solid #000;
+      text-align: center;
+      list-style: none;
+    }
+    .wrap-list li {
+      margin-bottom: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="wrap-pokemon">
     <div class="wrap-detail"></div>
-    <div class="wrap-list"></div>
+    <ul class="wrap-list"></ul>
   </div>
 </body>
 </html>

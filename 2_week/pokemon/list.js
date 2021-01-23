@@ -1,20 +1,42 @@
+import { fetchPokemons } from './service'
+
 class List {
-  constructor() {
+  constructor(props) {
     this.container = document.querySelector('.wrap-list')
+    this.pokemons = null
+    this.props = props
 
-    this.render()
+    this.componentWillMount()
   }
-  // 1. fetch
-  // 2. 결과물을 바탕으로 render
-  // 3. 일어난 액션의 url을 detail 에게 전달
+  async componentWillMount() {
+    try {
+      const data = await fetchPokemons()
 
-  render() {
-    this.container.innerHTML = `
-      <ul>
-        <li>피카츄</li>
-        <li>라이츄</li>
-      </ul>
-    `
+      this.setPokemons(data.results)
+
+      this.addEvent()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  setPokemons(data) {
+    this.pokemons = data
+    this.render(this.pokemons)
+  }
+
+  addEvent() {
+    this.container.addEventListener('click', (e) => {
+      if (e.target.tagName === 'LI') {
+        this.props.onClickPokemon(e.target.dataset.url)
+      }
+    })
+  }
+
+  render(items) {
+    this.container.innerHTML = items
+      .map((item) => `<li data-url=${item.url}>${item.name}</li>`)
+      .join('')
   }
 }
 
