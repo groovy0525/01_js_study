@@ -1,18 +1,15 @@
+import { fetchPokemon } from './service'
+
 class Detail {
   constructor() {
     this.container = document.querySelector('.wrap-detail')
-    // this.render()
-    this.fetchDetail('https://pokeapi.co/api/v2/pokemon/1')
   }
 
-  async fetchDetail(url) {
-    try {
-      const response = await fetch(url)
-      const data = await response.json()
-      this.render(data)
-    } catch (error) {
-      console.log(error)
-    }
+  async setPokemon(url) {
+    const data = await fetchPokemon(url)
+
+    this.pokemon = data
+    this.render(this.pokemon)
   }
 
   render(data) {
@@ -21,16 +18,17 @@ class Detail {
       this.container.innerHTML = `
         <h1 class="empty">선택된 포켓몬이 없습니다</h1>
       `
-    } else {
-      const { name, weight, height } = data
-      const nodeList = Object.values(data.sprites)
-        .map((item) => {
-          if (typeof item === 'string') {
-            return `<img src=${item} />`
-          }
-        })
-        .join('')
-      this.container.innerHTML = `
+      return
+    }
+    const { name, weight, height } = data
+    const nodeList = Object.values(data.sprites)
+      .map((item) => {
+        if (typeof item === 'string') {
+          return `<img src=${item} />`
+        }
+      })
+      .join('')
+    this.container.innerHTML = `
         <div class="photo-list">
           ${nodeList}
         </div>
@@ -41,7 +39,6 @@ class Detail {
           <li>${height}</li>
         </ul>
       `
-    }
   }
 }
 

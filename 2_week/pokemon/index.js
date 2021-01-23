@@ -10,15 +10,14 @@ import Detail from './detail'
 
 class Pokemon {
   constructor() {
-    this.list = new List()
+    this.list = new List({ onClickPokemon: this.handleClickPokemon.bind(this) })
     this.detail = new Detail()
   }
 
-  changeDetail(url) {
-    this.detail = {
-      ...this.detail,
-      url,
-    }
+  handleClickPokemon(url) {
+    console.log('url', url)
+    console.log(this)
+    this.detail.setPokemon(url)
   }
 }
 
