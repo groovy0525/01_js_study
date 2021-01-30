@@ -3,11 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    bundle: path.resolve(__dirname, './3_week/router/index.js'),
+    bundle: path.resolve(__dirname, './src/index.js'),
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve(__dirname, './3_week/dist'),
+    path: path.resolve(__dirname, './dist'),
   },
   module: {
     rules: [
@@ -21,12 +21,12 @@ module.exports = {
   resolve: {},
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './3_week/router/template/index.html'),
+      template: path.resolve(__dirname, './public/index.html'),
       filename: 'index.html',
     }),
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, './3_week/dist'),
+    contentBase: path.resolve(__dirname, './dist'),
     open: true,
     hot: true,
     inline: true,
