@@ -1,13 +1,12 @@
 import React from 'react'
 
-import Container from './shared/container'
-import Text from './shared/text'
+import Webtoon from './webtoon'
 
 function App() {
   return (
-    <Container maxWidth={720} centerd>
-      <Text size={15}>App</Text>
-    </Container>
+    <>
+      <Webtoon />
+    </>
   )
 }
 
