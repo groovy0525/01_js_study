@@ -3,7 +3,7 @@ import Todo from './todo'
 class TodoList {
   constructor() {
     this.list = []
-    this.filterList = []
+    this.filteredList = []
   }
 
   // 추가
@@ -26,18 +26,24 @@ class TodoList {
 
   // 필터링
   // ALL / DONE / DOING
-  filterTodos(done) {
-    if (done === 'ALL') {
-      this.filterList = [...this.list]
-      return
-    }
-
-    if (done === 'DONE') {
-      this.filterList = this.list.filter((todo) => todo.isDone === true)
-    }
-
-    if (done === 'DOING') {
-      this.filterList = this.list.filter((todo) => todo.isDone === false)
+  filterTodos(type) {
+    // 2개 이상 ? switch 고려
+    switch (type) {
+      case type === 'ALL': {
+        this.filteredList = [...this.list]
+        return
+      }
+      case type === 'DONE': {
+        this.filteredList = this.list.filter((todo) => todo.isDone)
+        return
+      }
+      case type === 'DOING': {
+        this.filteredList = this.list.filter((todo) => !todo.isDone)
+        return
+      }
+      default: {
+        this.filteredList = this.list
+      }
     }
   }
 }
