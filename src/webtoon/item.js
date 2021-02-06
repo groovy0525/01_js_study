@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import Container from '../shared/container'
 import Text from '../shared/text'
 
-const Base = styled(Container)`
+const ItemContainer = styled(Container)`
   align-items: center;
   & + & {
     border-top: 1px solid #eee;
@@ -23,8 +24,10 @@ const Author = styled(Text)`
   }
 `
 
+// 공통 컴포넌트 정의 필요
 const Img = styled.img``
 
+// 공통 컴포넌트 정의 필요
 const Button = styled.button`
   outline: none;
   border: none;
@@ -38,21 +41,32 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-function WebtoonItem({ webtoon, onDelete }) {
+function Item({ webtoon, onDelete }) {
   const { id, title, author, src, day } = webtoon
   return (
-    <Base display="flex" padding="10px 0">
+    <ItemContainer display="flex" padding="10px 0">
       <Img src={src} alt={title} />
-      <Text margin="0 0 0 10px">
+      <Container margin="0 0 0 10px">
         <Text bold>{title}</Text>
         <Text display="flex" color="#bbb" size={14}>
           <Author display="flex">{author}</Author>
           <Text size={13}>{day}</Text>
         </Text>
-      </Text>
+      </Container>
       <Button onClick={() => onDelete(id)}>삭제</Button>
-    </Base>
+    </ItemContainer>
   )
 }
 
-export default WebtoonItem
+Item.propTypes = {
+  webtoon: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+    src: PropTypes.string,
+    day: PropTypes.string,
+  }),
+  onDelete: PropTypes.func,
+}
+
+export default Item
