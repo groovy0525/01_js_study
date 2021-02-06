@@ -1,12 +1,12 @@
 import React from 'react'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import Webtoon from '.'
+import WebtoonList from '.'
 
 export default {
   title: '웹툰',
-  component: Webtoon,
+  component: WebtoonList,
   decorator: [withKnobs],
 }
 
-export const 웹툰 = () => <Webtoon />
+export const 웹툰_리스트 = () => <WebtoonList />

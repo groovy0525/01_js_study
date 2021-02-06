@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { centered, marginPadding } from './mixins'
+
 /**
  * styled.<tagname> = `styles ...`
  */
@@ -9,10 +11,10 @@ const Container = styled.div`
   ${({ position }) => position && `position: ${position};`}
   ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth}px;`}
   ${({ height }) => height && `height: ${height}px;`}
-  ${({ centered }) => centered && `margin: 0 auto;`}
-  ${({ margin }) => margin && `margin: ${margin};`}
-  ${({ padding }) => padding && `padding: ${padding};`}
   ${({ background }) => background && `background:${background};`}
+
+  ${centered}
+  ${marginPadding}
 `
 
 export default Container

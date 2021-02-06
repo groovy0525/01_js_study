@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Form = styled.form`
@@ -29,30 +29,25 @@ const Button = styled.button`
 `
 
 function WebtoonAddForm({ onCreate }) {
-  const titleInput = useRef()
-  const authorInput = useRef()
-  const [inputs, setInputs] = useState({
+  const DEFAULT_WEBTOON_VALUE = {
     title: '',
     author: '',
     src:
       'https://shared-comic.pstatic.net/thumb/webtoon/703852/thumbnail/thumbnail_IMAG10_7a7e52e5-f211-485d-a5ba-4f6f3f8acdc6.jpg',
     day: '화요일',
-  })
-  const { title, author } = inputs
+  }
+  const [formValues, setformValues] = useState(DEFAULT_WEBTOON_VALUE)
+  const { title, author } = formValues
   const onSubmit = (e) => {
     e.preventDefault()
-    onCreate(inputs)
-    setInputs({
-      ...inputs,
-      title: '',
-      author: '',
-    })
+    onCreate(formValues)
+    setformValues(DEFAULT_WEBTOON_VALUE)
   }
-  const onChange = () => {
-    setInputs({
-      ...inputs,
-      title: titleInput.current.value,
-      author: authorInput.current.value,
+  const onChange = (e) => {
+    const { name, value } = e.target
+    setformValues({
+      ...formValues,
+      [name]: value,
     })
   }
   return (
@@ -63,7 +58,6 @@ function WebtoonAddForm({ onCreate }) {
         name="title"
         onChange={onChange}
         value={title}
-        ref={titleInput}
       />
       <Input
         type="text"
@@ -71,7 +65,6 @@ function WebtoonAddForm({ onCreate }) {
         name="author"
         onChange={onChange}
         value={author}
-        ref={authorInput}
       />
       <Button type="submit">등록</Button>
     </Form>

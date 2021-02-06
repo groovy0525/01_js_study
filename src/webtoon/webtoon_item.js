@@ -41,10 +41,10 @@ const Button = styled.button`
 function WebtoonItem({ webtoon, onDelete }) {
   const { id, title, author, src, day } = webtoon
   return (
-    <Base display="flex" padding={`10px 0`}>
+    <Base display="flex" padding="10px 0">
       <Img src={src} alt={title} />
-      <Text margin={`0 0 0 10px`}>
-        <Text bold="bold">{title}</Text>
+      <Text margin="0 0 0 10px">
+        <Text bold>{title}</Text>
         <Text display="flex" color="#bbb" size={14}>
           <Author display="flex">{author}</Author>
           <Text size={13}>{day}</Text>
